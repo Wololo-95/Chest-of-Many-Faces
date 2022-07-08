@@ -1,15 +1,16 @@
 import random
+from numpy.random import choice
 
-# Generates race with human bias, then elf (most cities in faerun are mostly populated by humans)
-# Slightly increased tiefling bias for my own uses in Baldur's Gate
-# Will eventually create actual system to account and select for biases
-races = ["Human", "Human", "Human", "Human", "Human", "Human", "Human", "elf", "elf", "elf", "elf", "elf", "dwarf",
-         "dwarf", "dwarf", "halfling", "halfling", "halfling", "Tiefling", "Tiefling", "gnome", "Satyr", "Changeling"]
-race = random.choice(races)
+# Generates race with human bias, then elf (most cities in faerun are mostly populated by humans then elves)
+# Slightly increased Tiefling bias for my own uses in Baldur's Gate - also plan to add other races
+races = ["Human", "Elf", "Dwarf", "Halfling", "Tiefling", "Gnome", "Satyr", "Changeling"]
+# Probabilities correspond 1:1 to the race list, modify to change frequency -- must equal 1 & be float
+race = choice(races, 1, p=[0.40, 0.20, 0.12, 0.10, 0.14, 0.033, 0.002, 0.005])
 
-# Determines sex
+# Determines sex - biased male for my own convenience, easier to voice male characters
 sexes = ["Male", "Female"]
-sex = random.choice(sexes)
+# Again, probability corresponds 1:1, values must be float
+sex = choice(sexes, 1, p=[0.60, 0.40])
 
 # Selects name based on race
 if race == "Human" and sex == "Male":
@@ -22,6 +23,36 @@ if race == "Human" and sex == "Male":
             mh_list_filtered.append(each.replace("\n", ""))
     name = random.choice(mh_list_filtered)
     print("Number of Male Human names in list: " + str(mh_count))
+elif race == "Human" and sex == "Female":
+    with open("female human names", "r") as names:
+        fh_list = names.readlines()
+        fh_list_filtered = []
+        fh_count = 0
+        for each in fh_list:
+            fh_count += 1
+            fh_list_filtered.append(each.replace("\n", ""))
+    name = random.choice(fh_list_filtered)
+    print("Number of Female Human names in list: " + str(fh_count))
+elif race == "Elf" and sex == "Male":
+    with open("male elf names", "r") as names:
+        me_list = names.readlines()
+        me_list_filtered = []
+        me_count = 0
+        for each in me_list:
+            me_count += 1
+            me_list_filtered.append(each.replace("\n", ""))
+    name = random.choice(me_list_filtered)
+    print("Number of Male Elf names in list: " + str(me_count))
+elif race == "Elf" and sex == "Female":
+    with open("female elf names", "r") as names:
+        fe_list = names.readlines()
+        fe_list_filtered = []
+        fe_count = 0
+        for each in fe_list:
+            fe_count += 1
+            fe_list_filtered.append(each.replace("\n", ""))
+    name = random.choice(fe_list_filtered)
+    print("Number of Female Elf names in list: " + str(fe_count))
 else:
     name = "Not Valid - under construction"
 
@@ -99,7 +130,7 @@ print("Number of total physical traits in list: " + str(phys_count))
 
 print("--------------------------------")
 print("Name:")
-print(name)
+print(str(name))
 print("Race:")
 print(race)
 print("Sex:")
