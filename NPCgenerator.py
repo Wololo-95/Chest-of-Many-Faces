@@ -4,7 +4,6 @@ import os
 
 OUTPUT_FOLDER = "NPCs"
 
-
 # Generates race with human bias, then elf (most cities in faerun are mostly populated by humans then elves)
 # Slightly increased Tiefling bias for my own uses in Baldur's Gate - also plan to add other races
 races = ["Human", "Elf", "Dwarf", "Halfling", "Tiefling", "Gnome", "Satyr", "Changeling"]
@@ -156,43 +155,141 @@ elif social_status == "Adventurer":  # adventurers are 10-18, with emphasis on m
     wisdom = random.randrange(10, 16)
     charisma = random.randrange(10, 16)
 elif social_status == "Aristocrat":  # Aristocrats have moderate stats with emphasis on charisma/wisdom
-    strength = random.randrange(10, 14)
+    strength = random.randrange(10, 16)
     dexterity = random.randrange(10, 14)
     constitution = random.randrange(10, 12)
     intelligence = random.randrange(10, 14)
-    wisdom = random.randrange(10, 16)
+    wisdom = random.randrange(10, 18)
     charisma = random.randrange(10, 18)
 else:
     print("Invalid selection made for value 'social_status'")  # never reached
 
 # System for determining the NPC's occupation, determined at random, may add system for bias with social status
 occupation = ""  # Create variable to be called later
-if social_status == "Peasant" or "Commoner":  # Peasants/commoners will share occupations - similar class level
-    occupations = ["Farmer", "Shopkeeper", "Bar-hand", "Innkeeper", "Stable Boy/Girl", "Blacksmith - Weapons", "Farrier",
-                   "Leather-worker", "Tanner", "Tailor", "Brewer", "Dyer", "Furrier", "Blacksmith - Armorer",
-                   "Parchment maker", "Basket Weaver", "Silversmith", "Goldsmith", "Wine-maker", "Food Vendor",
-                   "Unemployed", "Butcher", "Baker", "Stonemason", "Weaver", "Cobbler", "Roofer", "Locksmith",
-                   "Carpenter", "Cook", "Unemployed - Shady or Illegal Business", "Miner", "Woodcarver", "Wine Seller",
-                   "Torturer", "Tinker", "Toymaker", "Clergyman/woman", "Water Carrier", "Builder", "Trapper",
-                   "Vendor - General", "Street Sweeper", "Thief", "Vendor - Spices", "Wood Seller", "Wrestler",
-                   "Gladiator", "Slave", "Potter", "Pirate", "Ropemaker", "Rugmaker", "Seamster/tress", "Servant",
-                   "Pastry cook", "Plasterer", "Potter", "Priest/ess", "Professor", "Prostitute", "Alchemist", "Artist",
-                   "Buckle-maker", "Beekeeper", "Vendor - Books", "Vendor - Alcohol", "Fisherman", "Dock worker"]
-    occupation = random.choice(occupations)  # each position is equally likely to be chosen currently
-elif social_status == "Adventurer":  # Adventurers will choose more rare careers
-    occupations = ["Bounty Hunter", "Hunter", "Fighter", "Scholar", "Odd Jobs - Adventurer", "Unemployed",
-                   "Unemployed - Shady or Illegal Business", "Guard", "Guard-for-hire", "Sword-for-hire",
-                   "Tax Collector", "Sorcerer/Sorceress", "Ranger", "Pirate", "Philosopher", "Bard", "Necromancer",
-                   "Warlock", "Paladin", "Soldier", "Outlander", "Squire", "Musician"]
+if social_status == "Peasant":
+    occupations = ["Farmer", "Bar-hand", "Stable Boy/Girl", "Blacksmith - Weapons", "Farrier", "Leather-worker",
+                   "Tanner", "Tailor", "Brewer", "Dyer", "Furrier", "Blacksmith - Armorer", "Parchment maker",
+                   "Basket Weaver", "Food Vendor", "Unemployed", "Butcher", "Baker", "Stonemason", "Weaver", "Cobbler",
+                   "Roofer", "Locksmith", "Carpenter", "Cook", "Unemployed - Shady or Illegal Business", "Miner",
+                   "Woodcarver", "Wine Seller", "Torturer", "Tinker", "Toymaker", "Clergyman/woman", "Water Carrier",
+                   "Builder", "Trapper", "Street Sweeper", "Thief", "Wrestler", "Gladiator", "Slave", "Potter",
+                   "Ropemaker", "Rugmaker", "Seamster/tress", "Servant", "Pastry cook", "Plasterer", "Priest/ess",
+                   "Professor", "Prostitute", "Alchemist", "Artist", "Fisherman", "Dock worker", "Latrine Cleaner",
+                   "Beggar", "Unemployed"]
+    occupation = random.choice(occupations)  # Peasants have no skill-based occupations
+if social_status == "Commoner":
+    occupations = ["Farmer", "Bar-hand", "Stable Boy/Girl", "Slave", "Servant", "Tailor", "Cook", "Prostitute",
+                   "Torturer", "Jailer", "Roofer", "Toymaker", "Dock worker", "Water Carrier",
+                   "Unemployed - Shady or illegal business", "Drunkard", "Latrine Cleaner", "Builder", "Unemployed",
+                   "Butcher", "Baker", "Street Sweeper", "Seamster/tress", "Fisherman", "Beggar"]
+    if strength > 10:
+        strength_occupations = ["Blacksmith - Weapons", "Blacksmith - Armorer", "Stonemason", "Carpenter", "Builder",
+                                "Gladiator", "Wrestler", "Woodcutter", "Miner", "Brick Maker", "Pirate", "Dock Worker",
+                                "Fisherman", "Torturer", "Water Carrier", "Roofer", "Butcher" "Miner", "Gravekeeper",
+                                "Buckle-maker", "Cobbler", "Farrier", "Guard (Town)", "Soldier"]
+        for each in strength_occupations:
+            occupations.append(each)
+    if dexterity > 10:
+        dexterity_occupations = ["Leather-worker", "Farrier", "Basket Weaver", "Weaver", "Silversmith", "Goldsmith",
+                                 "Locksmith", "Thief", "Tinker", "Artist", "Wrestler", "Gladiator", "Ropemaker",
+                                 "Seamster/tress", "Pirate", "Wood Carver", "Cobbler", "Fisherman", "Hunter",
+                                 "Archer (Sport)", "Archer (Guard)", "Circus Performer", "Furrier", "Barber",
+                                 "Seamster/tress", "Archer (Soldier)", "Crossbowman (Soldier)"]
+        for each in dexterity_occupations:
+            occupations.append(each)
+    if constitution > 10:
+        constitution_occupations = ["Gladiator", "Drunkard", "Wrestler", "Bodyguard", "Pirate", "Carpenter",
+                                    "Blacksmith - Weapons", "Blacksmith - Armorer", "Butcher", "Dock Worker",
+                                    "Beekeeper", "Latrine Cleaner", "Brewer", "Mortician", "Soldier"]
+        for each in constitution_occupations:
+            occupations.append(each)
+    if intelligence > 10:
+        intelligence_occupations = ["Alchemist", "Scholar", "Professor", "Artist", "Tinker", "Inventor",
+                                    "Historian", "Wizard's Apprentice", "Herbalist", "Brewer", "Poisoner",
+                                    "Architect", "Scrivener", "Scribe", "Magic Item Enthusiast", "Arcanist",
+                                    "Librarian", "Translator", "Mathematician", "Investigator", "Vendor - Books",
+                                    "Wine Maker", "Nurse", "Doctor"]
+        for each in intelligence_occupations:
+            occupations.append(each)
+    if wisdom > 10:
+        wisdom_occupations = ["Clergyman/woman", "Priest/Priestess", "Farrier", "Naturalist", "Herbalist", "Poisoner",
+                              "Alchemist", "Trapper", "Stable Manager", "Animal Breeder", "Vendor - General",
+                              "Vendor - Spices", "Vendor - Wood", "Vendor - Alcohol", "Vendor - Books",
+                              "Vendor - Jewelry", "Artist", "Vendor - Furs", "Vendor - Food", "Vendor - Meat",
+                              "Dyer", "Beekeeper", "Philosopher", "Cleric's Assistant", "Rug Maker", "Furrier", "Scout",
+                              "Watchman (guard)", "Barber"]
+        for each in wisdom_occupations:
+            occupations.append(each)
+    if charisma > 10:
+        charisma_occupations = ["Town Crier", "Vendor - General", "Vendor - Spices", "Vendor - Wood",
+                                "Vendor - Alcohol", "Vendor - Books", "Vendor - Jewelry", "Artist", "Vendor - Furs",
+                                "Vendor - Food", "Vendor - Meat", "Charlatan", "Gambler", "Warlock's Apprentice",
+                                "Drunkard", "Entertainer", "Circus Performer", "Musician", "Interrogator", "Salesman",
+                                "Writer", "Poet", "Public Speaker"]
+        for each in charisma_occupations:
+            occupations.append(each)
+    occupation = random.choice(occupations)  # each position is based on the skills of the NPC
+    # Duplicates serve to reinforce that x would be a good career for the given NPC
+
+if social_status == "Adventurer":  # Adventurers will choose more rare careers
+    occupations = ["Odd Jobs - Adventurer", "Unemployed", "Unemployed - Shady or Illegal Business"]
+    if strength or dexterity or constitution > 12:
+        martial_careers = ["Bounty Hunter", "Hunter", "Fighter", "Odd Jobs - Adventurer", "Unemployed",
+                           "Guard", "Guard-for-hire", "Sword-for-hire", "Tax Collector", "Ranger", "Pirate", "Paladin",
+                           "Soldier", "Outlander", "Squire"]
+        for each in martial_careers:
+            occupations.append(each)
+    if intelligence > 12:
+        intelligence_occupations = ["Scholar", "Alchemist", "Wizard", "Necromancer", "Investigator", "Conjurer"]
+        for each in intelligence_occupations:
+            occupations.append(each)
+    if wisdom > 12:
+        wisdom_occupations = ["Philosopher", "Druid", "Cleric", "Inquisitor", "Ranger", "Outlander", "Paladin"]
+        for each in wisdom_occupations:
+            occupations.append(each)
+    if charisma > 12:
+        charisma_occupations = ["Sorcerer/Sorceress", "Tax Collector", "Pirate", "Bard", "Squire", "Musician"]
+        for each in charisma_occupations:
+            occupations.append(each)
     occupation = random.choice(occupations)
-elif social_status == "Aristocrat":  # Aristocrats will likely be involved with guilds, merchants or politics
-    occupations = ["Politician - Councilman/Senator", "Politician - Mayor/Count", "Politician - Magistrate", "Merchant",
-                   "Guild Artisan", "Investor", "Inn Owner", "Advocate (Lawyer)", "Architect", "Caravan Leader",
-                   "Famed Cartographer", "Commander - Army", "Commander - Guard", "Brothel Keeper", "Shipmaster",
-                   "Doctor", "Inventor", "Knight", "Historian", "Lord/Lady", "Nobleman/woman", "Diplomat", "Concubine",
-                   "Squire", "Interpreter"]
-else:
-    occupation = "Unemployed"  # Never reached
+
+if social_status == "Aristocrat":  # Aristocrats will likely be involved with guilds, merchants or politics
+    occupations = ["Lord/Lady", "Nobleman/woman"]
+    if strength > 12 and constitution > 12:  # Martial and Soldier Careers
+        martial_careers = ["Commander - Army", "Commander - Guard", "Knight", "Soldier", "Squire"]
+        for each in martial_careers:
+            occupations.append(each)
+    elif charisma > 12:  # Politician and orator careers
+        oration_careers = ["Politician - Councilman/Senator", "Politician - Mayor/Count", "Politician - Magistrate",
+                           "Advocate (Lawyer)", "Diplomat", "Interpreter", "Interrogator"]
+        for each in oration_careers:
+            occupations.append(each)
+    elif intelligence > 13:
+        intelligence_careers = ["Investor", "Inventor", "Historian", "Scholar", "Architect", "Doctor", "Surgeon"]
+        for each in intelligence_careers:
+            occupations.append(each)
+    elif wisdom > 12:  # Wise investor/businessperson careers
+        business_careers = ["Investor", "Brothel Keeper", "Caravan Leader", "Inn Owner", "Merchant"]
+        for each in business_careers:
+            occupations.append(each)
+    else:
+        occupation = "Unemployed"
+    occupation = random.choice(occupations)
+
+# Wealth statuses
+wealth = ""
+if social_status == "Peasant":
+    wealth_options = ["Wretched", "Squalid", "Poor", "Modest"]
+    wealth = choice(wealth_options, 1, p=[0.2, 0.35, 0.35, 0.1])
+elif social_status == "Commoner":
+    wealth_options = ["Squalid", "Poor", "Modest", "Comfortable"]
+    wealth = choice(wealth_options, 1, p=[0.25, 0.4, 0.25, 0.1])
+elif social_status == "Adventurer":
+    wealth_options = ["Poor", "Modest", "Comfortable", "Wealthy", "Aristocratic"]
+    wealth = choice(wealth_options, 1, p=[0.05, 0.15, 0.45, 0.3, 0.05])
+elif social_status == "Peasant":
+    wealth_options = ["Modest", "Comfortable", "Wealthy", "Aristocratic"]
+    wealth = choice(wealth_options, 1, p=[0.1, 0.3, 0.3, 0.3])
 
 # File write and output
 filename = "{}.txt".format(name)  # Uses name variable to name the file for ease of access
@@ -217,8 +314,7 @@ file.write("ATTRIBUTES, GOALS, OCCUPATIONS\n\n")
 file.write("Social Class: {}\n".format(social_status))
 file.write("Occupation: {}\n".format(occupation))
 file.write("Goal:\n")
-file.write("Wealth Status:\n\n")
-
+file.write("Wealth Status: {}\n\n".format(wealth))
 
 file.write("Strength: {}\n".format(strength))
 file.write("Dexterity: {}\n".format(dexterity))
@@ -249,7 +345,7 @@ print("Physical Trait: " + physical)
 print("-------------------------\n")
 print("Social Class: " + str(social_status))
 print("Occupation: " + str(occupation))
-print("Wealth Status: FEATURE TBA")
+print("Wealth Status: " + str(wealth))
 print("Goal: FEATURE TBA \n\n")
 print("Attribute Array:")
 print("Strength: " + str(strength))
