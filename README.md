@@ -10,12 +10,15 @@ Biases will be created to generate more humans, elves, dwarves and tieflings tha
 
 working on the idea of having a simple gui
 
-TBA:
+# Details
 
-goals
+<h2> Names:</h2>
+Very simple system, pulls name based off Race and Sex. Names are handled in a txt file and sorted by script
 
-occupations
-
-additional races
-
-wealth status
+<h2>Bonds, Flaws, Ideals</h2>
+  <h3>Bonds</h3>
+  Bonds are used to create a character's convictions, or their drives, and can often be used as plot pieces
+  <h3>Flaws</h3>
+  Flaws are used to show some level of weakness
+  <h3> Ideals </h3>
+  Ideals are the character's ties to the world; things they believe in fundamentally
