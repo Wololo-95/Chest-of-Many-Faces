@@ -1,3 +1,4 @@
+from importlib.resources import path
 import random
 import os
 from numpy.random import choice
@@ -12,12 +13,16 @@ class NpcGenerator():
         self.MINIMUM_ATTRIBUTE_SCORE = 6
         self.attribute_scores = []
         self.traits = []
+        self.OUTPUT_FOLDER = "NPCs"
+        
     def race_gen(self):  # races are biased towards the earlier part of the list, as these are more prevalent races in major cities
         races = ["Human", "Elf", "Dwarf", "Half-Elf", "Tiefling", "Halfling", "Half-Orc", "Dragonborn", "Gnome", "Goblin", "Hobgoblin", "Drow",  "Satyr", "Changeling"]
         self.race = choice(races, 1, p=[0.23, 0.20, 0.10, 0.10, 0.10, 0.05, 0.05, 0.04, 0.03, 0.03, 0.02, 0.02, 0.02, 0.01])
+        
     def sex_gen(self):
         sexes = ["Male", "Female"]
         self.sex = choice(sexes, 1, p=[0.60, 0.40])
+        
     def name_gen(self):
         if self.race == "Human":
             if self.sex == "Male":
@@ -223,6 +228,7 @@ class NpcGenerator():
             self.name = random.choice(changeling_names)
         else:
             return "Invalid Race Selection - or - No Available Names"
+        
     def traits_gen(self):
         alignments = ["Lawful Good", "Lawful Neutral", "Lawful Evil", "Neutral Good", "True Neutral", "Neutral Evil", "Chaotic Good", "Chaotic Neutral", "Chaotic Evil"]
         self.alignment = random.choice(alignments)
@@ -278,7 +284,7 @@ class NpcGenerator():
             skills[each] = random.randint(self.MINIMUM_ATTRIBUTE_SCORE,self.MAXIMUM_ATTRIBUTE_SCORE)
         
         for ability, score in skills.items():
-            abilities.append(str(ability) + ": " + str(score))
+            abilities.append(str(ability) + ": " + str(score) +"\n")
         self.attribute_scores = abilities
         
     def display(self): # prints the generated information
@@ -292,7 +298,25 @@ class NpcGenerator():
         print("\n")
         for each in self.traits:
             print(each)
+            print("\n")
             
+    def output(self):
+        filename = "{}.txt".format(self.name)
+        file = open(filename, "w")
+        file.write("Name: {}\n".format(self.name))
+        file.write("Race: {} {}\n".format(str(self.sex),str(self.race)))
+        file.write("Alignment: {}\n\n".format(self.alignment))
+        for each in self.attribute_scores:
+            file.write(each)
+        file.write("\n\n")
+        for each in self.traits:
+            file.write(each)
+            file.write("\n\n")
+        file.close()
+        os.rename(filename, "{}/{}".format(self.OUTPUT_FOLDER, filename))
+        path = os.path.abspath(filename)
+        print("NPC file saved to location ", path)
+                   
 npc = NpcGenerator()
 npc.race_gen()
 npc.sex_gen()
@@ -300,3 +324,6 @@ npc.name_gen()
 npc.traits_gen()
 npc.attributes_gen()
 npc.display()
+npc.output()
+
+print("\n\n NPC Sucessfuly created. Thanks for using <3 \n\n Terminating Application")
