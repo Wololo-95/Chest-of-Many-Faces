@@ -1,0 +1,20 @@
+Name: Loggy McFoggy
+Race: Male Human
+Alignment: Lawful Good
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 7
+Dexterity: 14
+Constitution: 9
+Intelligence: 11
+Wisdom: 8
+Charisma: 12
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: I always have plan for what to do when things go wrong.
+Ideal: Freedom. Everyone should be free to pursue his or her livelihood. (Chaotic)
+Bond: Everything I do is for the common people. 
+Flaw: Dubious - Fraught with uncertainty or doubt. Undecided, doubtful, unsure.
+Quirk: Looks past people when talking
+Physical Characteristic: The NPC has many scars and callouses along their forearms, perhaps being formed over many brutal sparring sessions. 

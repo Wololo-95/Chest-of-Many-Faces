@@ -1,0 +1,20 @@
+Name: Rebecca Dormer
+Race: Female ['Human']
+Alignment: 
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 7
+Dexterity: 7
+Constitution: 13
+Intelligence: 7
+Wisdom: 9
+Charisma: 7
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: Militantly Vegan
+Ideal: Ideals aren't worth killing for or going to war for. (Neutral)
+Bond: My tools are symbols of my past life, and I carry them so that I will never forget my roots. 
+Flaw: I'm afraid to spend money. What if I need it later?
+Quirk: Waves weapons around
+Physical Characteristic: NPC has a forked tongue

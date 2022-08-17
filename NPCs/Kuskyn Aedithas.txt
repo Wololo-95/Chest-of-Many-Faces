@@ -1,0 +1,20 @@
+Name: Kuskyn Aedithas
+Race: ['Male'] ['Elf']
+Alignment: True Neutral
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 10
+Dexterity: 9
+Constitution: 10
+Intelligence: 6
+Wisdom: 10
+Charisma: 10
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: I have a lesson for every situation, drawn from observing nature.
+Ideal: Tradition. The ancient traditions of worship and sacrifice must be preserved and upheld. (Lawful)
+Bond: My tools are symbols of my past life, and I carry them so that I will never forget my roots. 
+Flaw: I don't care if I kill. We all die eventually... right?
+Quirk: Rolls eyes
+Physical Characteristic: The npc is abnormally tall/short for their race.

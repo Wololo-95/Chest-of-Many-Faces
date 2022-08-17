@@ -1,0 +1,20 @@
+Name: Nethmaia
+Race: ['Female'] ['Tiefling']
+Alignment: Lawful Good
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 11
+Dexterity: 8
+Constitution: 12
+Intelligence: 13
+Wisdom: 10
+Charisma: 11
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: Perfect Manners
+Ideal: Freedom. The sea is freedom--the freedom to go anywhere and do anything. (Chaotic)
+Bond: I sponsor an orphanage to keep others from enduring what I was forced to endure.
+Flaw: Liar - Compulsively and purposefully tells false truths more often than not. A person who has lied or who lies repeatedly.
+Quirk: Leans on things and people
+Physical Characteristic: NPC is fascinated by jewelry so much so that they are wearing so much jewelry that it weighs them down.

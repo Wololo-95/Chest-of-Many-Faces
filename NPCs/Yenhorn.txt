@@ -1,0 +1,20 @@
+Name: Yenhorn
+Race: ['Male'] ['Half-Elf']
+Alignment: Lawful Neutral
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 13
+Dexterity: 10
+Constitution: 8
+Intelligence: 8
+Wisdom: 11
+Charisma: 13
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: Old Fart
+Ideal: Aspiration. I'm determined to make something of myself. (Any)
+Bond: My old temple is where my heart is. The stone walls and belfries are my retreat, the place of calm & repose that I return to when the chaos of the outside world becomes too much.
+Flaw: I am extremely erratic in my behavior.
+Quirk: Constantly vulgar
+Physical Characteristic: The npc has a cleft cut into their nose.

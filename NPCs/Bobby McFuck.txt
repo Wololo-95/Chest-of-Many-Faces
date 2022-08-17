@@ -1,0 +1,20 @@
+Name: Bobby McFuck
+Race: Female Human
+Alignment: 
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 12
+Dexterity: 6
+Constitution: 13
+Intelligence: 9
+Wisdom: 14
+Charisma: 10
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: This NPC has OCD and is constantly trying to organize things.
+Ideal: Honor. I don't steal from others in the trade. (Lawful)
+Bond: An injury to the unspoiled wilderness of my home is an injury to me.
+Flaw: Despite my best efforts, I am unreliable to my friends.
+Quirk: Daydreamer
+Physical Characteristic: The NPC has not cut or groomed his/her hair since he/she was defeated by his/her rival 8 years ago.
