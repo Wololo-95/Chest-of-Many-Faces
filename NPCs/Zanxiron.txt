@@ -1,0 +1,14 @@
+Name: Zanxiron
+Race: ['Male'] ['Half-Elf']
+Alignment: 
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 9
+Dexterity: 7
+Constitution: 11
+Intelligence: 6
+Wisdom: 6
+Charisma: 12
+
+
+-------TRAITS AND FLAWS-------

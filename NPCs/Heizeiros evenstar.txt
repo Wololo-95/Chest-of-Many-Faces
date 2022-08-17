@@ -1,0 +1,20 @@
+Name: Heizeiros evenstar
+Race: ['Male'] ['Elf']
+Alignment: True Neutral
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 12
+Dexterity: 14
+Constitution: 8
+Intelligence: 9
+Wisdom: 14
+Charisma: 8
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: This NPC has good taste. They quickly pick out the little flourishes in the party's equipment and sincerely compliment subtle details.
+Ideal: Nature. The natural world is more important than all the constructs of civilization. (Neutral)
+Bond: I sponsor an orphanage to keep others from enduring what I was forced to endure.
+Flaw: I'm too greedy for my own good. I can't resist taking a risk if there's money involved.
+Quirk: Kleptomaniac
+Physical Characteristic: NPC was given a curse by a witch when he was a child and now has a finger on his right arm that points in the direction of the closest person that wants to kill him.

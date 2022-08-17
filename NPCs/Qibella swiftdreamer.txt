@@ -1,0 +1,20 @@
+Name: Qibella swiftdreamer
+Race: ['Female'] ['Elf']
+Alignment: Neutral Good
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 7
+Dexterity: 14
+Constitution: 10
+Intelligence: 13
+Wisdom: 14
+Charisma: 14
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: Slovenly
+Ideal: Greater Good. My gifts are meant to be shared with all, not used for my own benefit. (Good)
+Bond: I would lay down my life for the people I served with. 
+Flaw: My pride will probably lead to my destruction
+Quirk: Sniffs things/people
+Physical Characteristic: NPC has ashen skin and no hair.

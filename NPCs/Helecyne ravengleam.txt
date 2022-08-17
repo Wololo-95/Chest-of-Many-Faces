@@ -1,0 +1,20 @@
+Name: Helecyne ravengleam
+Race: ['Female'] ['Elf']
+Alignment: Chaotic Neutral
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 9
+Dexterity: 7
+Constitution: 13
+Intelligence: 6
+Wisdom: 10
+Charisma: 8
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: The NPC is a ten thousand year old dragon in disguise, just havin' a right giggle at causing all sorts of trouble.
+Ideal: Might. If I become strong, I can take what I want--what I deserve. (Evil)
+Bond: I entered seclusion to hide from the ones who might still be hunting me. I must someday confront them.
+Flaw: There's no room for caution in a life lived to the fullest.
+Quirk: Deep voice
+Physical Characteristic: NPC has abnormally large forearms and/or calves.
