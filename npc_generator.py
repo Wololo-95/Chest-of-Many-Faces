@@ -19,7 +19,7 @@ class NpcGenerator():
         self.flaw = ""
         self.physical = ""
         self.traits = []
-        # seperate attribute score lineup so that if a user desires to manually set their attributes, they can
+        # separate attribute score lineup so that if a user desires to manually set their attributes, they can
         self.custom_attributes_enabled = False
         self.strength = 10
         self.dexterity = 10
@@ -296,7 +296,7 @@ class NpcGenerator():
                 phys_list.append(each.replace("\n", "")) 
         self.physical = random.choice(phys_list)
     
-    def attributes_gen(self):
+    def attributes_gen(self):  # Uses dictionary to create attributes, then writes them to an ability list for later reference
         abilities = []
         skills = {"Strength":8, "Dexterity":8, "Constitution":8, "Intelligence":8, "Wisdom":8, "Charisma":8}  # sets baseline for stats in the event that it does not generate a stat array.
         for each in skills:
@@ -309,20 +309,19 @@ class NpcGenerator():
     def custom_attribute_selection(self):
         self.custom_attributes_enabled = True
         
-    def display(self): # prints the generated information
-        print("NPC Generated! \n\n")
+    def display(self):  # Returns in-terminal output of the generated NPC
+        print("NPC Generated! \n")
         print("Name: ", self.name)
         print("Race: ", self.race)
         print("Sex: ", self.sex)
-        print("Alignment: ", self.alignment + "\n")
+        print("Alignment: ", self.alignment)
         for each in self.attribute_scores:
             print(each)
         print("\n")
         for each in self.traits:
             print(each)
-
             
-    def output(self):
+    def output(self):  # Writes the NPC to file for reference
         filename = "{}.txt".format(self.name)
         file = open(filename, "w")
         file.write("Name: {}\n".format(self.name))
@@ -352,9 +351,8 @@ class NpcGenerator():
         path = os.path.abspath(filename)
         print("NPC file saved to location ", path)
 
-# Runs each method of the class to generate NPCs
 '''
-# Temporarily Disabled for debugging
+# Temporarily disabled for GUI Testing, GUI inherently runs each method as selected.
 npc = NpcGenerator()
 npc.race_gen()
 npc.sex_gen()
