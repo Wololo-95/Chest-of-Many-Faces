@@ -1,0 +1,26 @@
+Name: Gonga Geeko Leeko
+Race: Male Drow
+Alignment: Lawful Evil
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 17.0
+Dexterity: 13.0
+Constitution: 12.0
+Intelligence: 8.0
+Wisdom: 14.0
+Charisma: 12.0
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: Hears voices
+Ideal: Responsibility. I do what I must and obey just authority. (Lawful)
+Bond: It is my duty to protect my students. 
+Flaw: I'd rather eat my armor than admit when I'm wrong.
+Quirk: Inappropriate joking
+Physical Characteristic: NPC has white eyes that glow when near neutral good to lawful good holy symbols.
+
+-------RELIGION, WEALTH, PROFESSION, AND LANGUAGES-------
+Religion: Mask, God of Thieves
+Wealth Status: ['Comfortable']
+Profession: Underworld Crime Boss
+Languages known: Goblin, Dwarvish, Common, 

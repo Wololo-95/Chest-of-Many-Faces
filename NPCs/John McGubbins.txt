@@ -1,0 +1,26 @@
+Name: John McGubbins
+Race: Male Elf
+Alignment: Lawful Evil
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 13
+Dexterity: 6
+Constitution: 7
+Intelligence: 9
+Wisdom: 7
+Charisma: 8
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: This NPC sees any new piece of information as a potential deception.
+Ideal: Live and Let Live. Meddling in the affairs of others only causes trouble. (Neutral)
+Bond: I was raised on a farm and have an affinity for/skill with a particular type of animal. Ex: horses, goats, geese.
+Flaw: I don't like to fully commit myself unless the odds are overwhelmingly in my favour.
+Quirk: Constantly changing/purchasing attire
+Physical Characteristic: The npc is abnormally tall/short for their race.
+
+-------RELIGION, WEALTH, PROFESSION, AND LANGUAGES-------
+Religion: Sehanine Moonbow, Elf Goddess of the Moon
+Wealth Status: ['Comfortable']
+Profession: Jeweler
+Languages known: Orcish, Halfling, Common, 

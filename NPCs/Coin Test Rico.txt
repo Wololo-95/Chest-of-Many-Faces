@@ -1,0 +1,27 @@
+Name: Coin Test Rico
+Race: ['Female'] Half-Elf
+Alignment: Lawful Neutral
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 14
+Dexterity: 6
+Constitution: 12
+Intelligence: 11
+Wisdom: 13
+Charisma: 7
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: Hears voices
+Ideal: Freedom. Chains are meant to be broken, as are those who would forge them. (Chaotic)
+Bond: In a harbor town, I have a paramour whose eyes nearly stole me from the sea. 
+Flaw: I can't stand still for longer than ten seconds.
+Quirk: Randomly makes noises (Eg. Rooster call during a discussion)
+Physical Characteristic: Scars... Everywhere.
+
+-------RELIGION, WEALTH, PROFESSION, AND LANGUAGES-------
+Religion: Rillifane Rallathil, Wood Elf God of Nature
+Wealth Status: ['Wealthy']
+Currently has: 8gp, 5sp, 25cp
+Profession: Real Estate Mogul
+Languages known: Elvish, Common, 

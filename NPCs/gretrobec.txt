@@ -1,0 +1,27 @@
+Name: gretrobec
+Race: Male ['Dragonborn']
+Alignment: Lawful Good
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 11
+Dexterity: 7
+Constitution: 11
+Intelligence: 6
+Wisdom: 11
+Charisma: 12
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: Hard-boiled
+Ideal: People. I help people who help me--that's what keeps us alive. (Neutral)
+Bond: I pursue wealth to secure someone's love. 
+Flaw: Overprotective - To protect too much; coddle.
+Quirk: Has random spikes of pain
+Physical Characteristic: Scars... Everywhere.
+
+-------RELIGION, WEALTH, PROFESSION, AND LANGUAGES-------
+Religion: Kelemvor, God of the Dead
+Wealth Status: ['Modest']
+Currently has: 2gp, 29sp, 40cp
+Profession: Small Town Mayor
+Languages known: Gnomish, Common, 

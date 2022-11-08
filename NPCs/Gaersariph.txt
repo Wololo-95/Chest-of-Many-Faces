@@ -1,0 +1,27 @@
+Name: Gaersariph
+Race: Male ['Half-Elf']
+Alignment: Neutral Evil
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 8
+Dexterity: 10
+Constitution: 13
+Intelligence: 7
+Wisdom: 10
+Charisma: 11
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: I quote (or misquote) the sacred texts and proverbs in almost every situation.
+Ideal: Aspiration. I work hard to be the best there is at my craft. (Any)
+Bond: Someone I loved died because of a mistake I made. That will never happen again.
+Flaw: Bad Habit - A revolting personal habit. Examples: picks nose, spits tobacco, drools, bad body odour.
+Quirk: Finds everything funny
+Physical Characteristic: NPC has acid burn scars on both of his hands.
+
+-------RELIGION, WEALTH, PROFESSION, AND LANGUAGES-------
+Religion: Waukeen, Goddess of Trade
+Wealth Status: ['Modest']
+Currently has: 1gp, 24sp, 66cp
+Profession: Farmer/Animals
+Languages known: Orcish, Common, 

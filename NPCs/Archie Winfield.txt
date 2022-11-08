@@ -1,0 +1,27 @@
+Name: Archie Winfield
+Race: Male ['Human']
+Alignment: Neutral Evil
+
+-------ATTRIBUTE SCORE ARRAY-------
+Strength: 8
+Dexterity: 9
+Constitution: 14
+Intelligence: 9
+Wisdom: 11
+Charisma: 7
+
+
+-------TRAITS AND FLAWS-------
+Personality trait: I can find common ground between the fiercest enemies, empathizing with them and always working toward peace.
+Ideal: Community. We have to take care of each other, because no one else is going to do it. (Lawful)
+Bond: Those who fight beside me are those worth dying for.
+Flaw: My hatred of my enemies is blind and unreasoning.
+Quirk: Plays with knife while talking
+Physical Characteristic: The NPC has many scars and callouses along their forearms, perhaps being formed over many brutal sparring sessions. 
+
+-------RELIGION, WEALTH, PROFESSION, AND LANGUAGES-------
+Religion: Nonreligious/Athiest
+Wealth Status: ['Poor']
+Currently has: 0gp, 27sp, 25cp
+Profession: Clockmaker
+Languages known: Gnomish, Common, 

@@ -27,6 +27,19 @@ class NpcGenerator():
         self.intelligence = 10
         self.wisdom = 10
         self.charisma = 10
+        # Wealth, occupation, languages, other advanced options
+        self.wealth = ""
+        self.occupation = ""
+        self.knows_common = True #Default value of true as most NPCs would speak common, can be set false only in GUI or webapp
+        self.knows_obscure_languages = False
+        self.languages = []
+        self.languages_known = 1
+        self.religion = ""
+        # Current coin values are determined based on wealth status
+        self.current_gold_pieces = 0
+        self.current_silver_pieces = 0
+        self.current_copper_pieces = 0
+
         # designates target folder for saved NPCs, folder must exist before running generator or it will be saved locally.
         self.OUTPUT_FOLDER = "NPCs"
         
@@ -308,7 +321,241 @@ class NpcGenerator():
 
     def custom_attribute_selection(self):
         self.custom_attributes_enabled = True
-        
+
+    def income_determinator(self):
+        wealth_options = ["Aristocratic", "Wealthy", "Comfortable", "Modest", "Poor", "Squalid", "Wretched"]
+        self.wealth = choice(wealth_options, 1, p=[0.05, 0.05, 0.23, 0.40, 0.17, 0.07, 0.03])
+    
+    def current_gold(self):
+        if self.wealth == "Aristocratic":
+            self.current_gold_pieces = random.randint(20, 85)
+            self.current_silver_pieces = random.randint(1, 100)
+            self.current_copper_pieces = random.randint(1, 100)
+        if self.wealth == "Wealthy":
+            self.current_gold_pieces = random.randint(1, 10)
+            self.current_silver_pieces = random.randint(1, 100)
+            self.current_copper_pieces = random.randint(1, 100)
+        if self.wealth == "Comfortable":
+            self.current_gold_pieces = random.randint(0,6)
+            self.current_silver_pieces = random.randint(0, 100)
+            self.current_copper_pieces = random.randint(1, 100)
+        if self.wealth == "Modest":
+            self.current_gold_pieces = random.randint(0,2)
+            self.current_silver_pieces = random.randint(0,45)
+            self.current_copper_pieces = random.randint(1, 80)
+        if self.wealth == "Poor":
+            self.current_gold_pieces = 0
+            self.current_silver_pieces = random.randint(0, 30)
+            self.current_copper_pieces = random.randint(0,40)
+        if self.wealth == "Squalid":
+            self.current_gold_pieces = 0
+            self.current_silver_pieces = random.randint(0,10)
+            self.current_copper_pieces = random.randint(0,20)
+        if self.wealth == "Wretched":
+            self.current_gold_pieces = 0
+            self.current_silver_pieces = 0
+            self.current_copper_pieces = random.randint(0,10)
+
+
+    def job_determinator(self):
+        if self.wealth == "Aristocratic" or self.wealth == "Wealthy":
+            job_list = ["Politician", "Merchant", "Caravan Owner", "Brothelkeep", "Tavern Chain Owner", "Lord/Lady", "Underworld Crime Lord", "Famed Artist", "Landlord", "Military Doctor", "Surgeon", "Court Advisor", "Diplomat", "Translator", "Con Man", "High-Ranked Military", "Fine Wine Seller", "Artisan", "Real Estate Mogul", "Unemployed/Inherited Wealth"]
+            self.occupation = random.choice(job_list)
+        if self.wealth == "Comfortable" or self.wealth == "Modest":
+            job_list = ["Merchant", "Tavern Owner", "Tavernkeeper", "Underworld Criminal", "Underworld Crime Boss", "Artist", "Artisan", "Farmer/Crops", "Farmer/Animals", "Farmer/All Agriculture", "Doctor", "Shopkeeper", "Small Town Mayor", "Town Guard", "Wine Maker", "Wine Seller", "Basket Weaver", "Smith (Armor)", "Smith (Weapons)", "Cook", "Silversmith", "Jeweler", "Woodcarver", "Woodworker", "Woodcutter", "Soldier", "Famous Fighter", "Bard", "Clockmaker"]
+            self.occupation = random.choice(job_list)
+        if self.wealth == "Poor" or self.wealth == "Squalid":
+            job_list = ["Farmer/Animals", "Farmer/Agriculture", "Farmer/All Agriculture", "Criminal", "Outlaw", "Basket Weaver", "Smith (Armor)", "Smith (Weapons)", "Silversmith", "Jeweller", "Shopkeeper", "Town Guard", "Soldier", "Wine Maker", "Wine Seller", "Basket Weaver", "Cook", "Woodcarver", "Woodcutter", "Woodworker", "Construction Worker", "Cobbler", "Bard", "Clockmaker", "Miner", "Servant", "Barber", "Fighter", "Fighter (Gladiator)", "Gardener", "Unemployed"]
+            self.occupation = random.choice(job_list)
+        if self.wealth == "Wretched":
+            job_list = ["Unemployed", "Farm Hand", "Slave", "Prisoner", "Prisoner (Escaped)"]
+            self.occupation = random.choice(job_list)
+
+    def known_languages(self):
+        languages = []
+        if self.knows_common == True:
+            languages = ["Dwarvish", "Elvish", "Giant", "Gnomish", "Goblin", "Halfling", "Orcish"]
+            if self.knows_obscure_languages == True:
+                obscure_languages = ["Abyssal", "Celestial", "Draconic", "Deep Speech", "Infernal", "Primordial", "Sylvan", "Undercommon"]
+                for each in obscure_languages:
+                    languages = languages.append(each)
+            self.languages = random.sample(languages, self.languages_known)
+            self.languages.append("Common")
+        elif self.knows_common == False:
+            self.languages_known = 1 
+            languages = ["Dwarvish", "Elvish", "Giant", "Gnomish", "Goblin", "Halfling", "Orcish"]
+            if self.knows_obscure_languages == True:
+                obscure_languages = ["Abyssal", "Celestial", "Draconic", "Deep Speech", "Infernal", "Primordial", "Sylvan", "Undercommon"]
+                for each in obscure_languages:
+                    languages = languages.append(each)
+            self.languages = random.sample(languages, self.languages_known)
+
+    def religion_generation_random(self):
+        # Main religion gen accounts for the Gods of Faerun, as well as no religious following, and a few unorthodox systems
+        # Religion chosen in this method is truly random, and not accounted for alignment
+        religions = ["Auril, Goddess of Winter", "Azuth, God of Wizards", "Bane, God of Tyrany", "Beshaba, Goddess of Misfortune", "Bhaal, God of Murder", "Chauntea, Goddess of Agriculture", "Cyric, God of Lies", "Deneir, God of Writing", "Eldath, Goddess of Peace", "Gond, God of Craft", "Helm, God of Protection", "Ilmater, God of Endurance", "Kelemvor, God of the Dead", "Lathander, Goddess of Illusion", "Lliira, Goddess of Joy", "Loviatar, Goddess of Pain", "Malar, God of the Hunt", "Mask, God of Thieves", "Mielikki, Goddess of Forests", "Milil, God of Poetry and Song", "Myrkul, God of Death", "Mystra, Goddess of Magic", "Oghma, God of Knowledge", "Savras, God of Divination and Fate", "Selûne, Goddess of the Moon", "Shar, Goddess of Darkness and Loss", "Silvanus, God of Wild Nature", "Sune, Goddess of Love and Beauty", "Talona, Goddess of Disease and Poison", "Talos, God of Storms", "Tempus, God of War", "Torm, God of Courage and Self-Sacrifice", "Tymora, Goddess of Good Fortune", "Tyr, God of Justice", "Umberlee, Goddess of the Sea", "Waukeen, Goddess of Trade", "Nonreligious/Athiest"]
+        self.religion = random.choice(religions)
+    
+    def religion_generation_alignment(self):
+        # Religion is Generated on an alignment basis, with gods specifically matching the NPC's alignment being most likely, followed by adjacent alignments
+        # E.G. NPC is True Neutral, and Gods with the same general alignment will be chosen first, followed by those who may be CN, LN, NG, NE at a lesser percentage
+        # Also appends the racial religions to the end of each
+        religions = []
+        if (self.alignment == "Lawful Good" or self.alignment == "Neutral Good") or "Chaotic Good":
+            religions = ["Ilmater, God of Endurance", "Torm, God of Courage and Self-Sacrifice", "Tyr, God of Justice", "Azuth, God of Wizards", "Chauntea, Goddess of Agriculture", "Deneir, God of Writing", "Eldath, Goddess of Peace", "Gond, God of Craft", "Helm, God of Protection", "Kelemvor, God of the Dead", "Lathander, God of Birth and Renewal", "Lliira, Goddess of Joy", "Mielikki, Goddess of Forest", "Milil, God of Poetry and Song", "Mystra, Goddess of Magic", "Silvanus, God of Wild Nature", "Sune, Goddess of Love and Beauty", "Tempus, God of War", "Tymora, Goddess of Good Fortune", "Nonreligious/Athiest"]
+            
+            if self.race == "Dragonborn":
+                religions.append("Bahamut, Dragon God of Good")
+                religions.append("Tiamat, Dragon Goddess of Evil")
+            
+            if self.race == "Elf" or self.race == "Half-Elf":
+                religions.append("Corellon Larethian, Elf Deity of Art and Magic")
+                religions.append("Deep Sashelas, Elf God of the Sea")
+                religions.append("Rillifane Rallathil, Wood Elf God of Nature")
+                religions.append("Sehanine Moonbow, Elf Goddess of the Moon")
+            
+            if self.race == "Gnome":
+                religions.append("Garl Glittergold, Gnome God of Trickery and Wiles")
+            
+            if self.race == "Halfling":
+                religions.append("Yondalla, Halfling Goddess of Fertility and Protection")
+            
+            if self.race == "Giant" or self.race == "Goliath":
+                religions.append("Grolantor, Hill Giant God of War")
+                religions.append("Skoraeus Stonebones, God of Stone Giants and Art")
+                religions.append("Surtur, God of fire Giants and Craft")
+                religions.append("Thrym, God of Frost Giants and Strength")
+            
+            if self.race == "Orc" or self.race == "Half-Orc":
+                religions.append("Gruumsh, Orc God of Storms and War")
+            
+            if self.race == "Kobold":
+                religions.append("Kurtulmak, Kobold God of War and Mining")
+            
+            if self.race == "Drow":
+                religions.append("Lolth, Drow Goddess of Spiders")
+            
+            if self.race == "Goblin":
+                religions.append("Maglubiyet, Goblinoid God of War")
+            
+            if self.race == "Dwarf":
+                religions.append("Moradin, Dwarf God of Creation")
+
+        if (self.alignment == "Lawful Neutral" or self.alignment == "True Neutral") or "Chaotic Neutral":
+            religions = ["Azuth, God of Wizards", "Chauntea, Goddess of Agriculture", "Deneir, God of Writing", "Eldath, Goddess of Peace", "Gond, God of Craft", "Helm, God of Protection", "Kelemvor, God of the Dead", "Lathander, God of Birth and Renewal", "Leira, Goddess of Illusion", "Mask, God of Thieves", "Mielikki, Goddess of Forests", "Milil God of Poetry and Song", "Mystra, Goddess of Magic", "Oghma, God of Knowledge", "Savras, God of Divination and Fate", "Silvanus, God of Wild Nature", "Tempus, God of War", "Waukeen, Goddess of Trade", "Nonreligious/Athiest"]
+            
+            if self.race == "Dragonborn":
+                religions.append("Bahamut, Dragon God of Good")
+                religions.append("Tiamat, Dragon Goddess of Evil")
+            
+            if self.race == "Elf" or self.race == "Half-Elf":
+                religions.append("Corellon Larethian, Elf Deity of Art and Magic")
+                religions.append("Deep Sashelas, Elf God of the Sea")
+                religions.append("Rillifane Rallathil, Wood Elf God of Nature")
+                religions.append("Sehanine Moonbow, Elf Goddess of the Moon")
+            
+            if self.race == "Gnome":
+                religions.append("Garl Glittergold, Gnome God of Trickery and Wiles")
+            
+            if self.race == "Halfling":
+                religions.append("Yondalla, Halfling Goddess of Fertility and Protection")
+            
+            if self.race == "Giant" or self.race == "Goliath":
+                religions.append("Grolantor, Hill Giant God of War")
+                religions.append("Skoraeus Stonebones, God of Stone Giants and Art")
+                religions.append("Surtur, God of fire Giants and Craft")
+                religions.append("Thrym, God of Frost Giants and Strength")
+            
+            if self.race == "Orc" or self.race == "Half-Orc":
+                religions.append("Gruumsh, Orc God of Storms and War")
+            
+            if self.race == "Kobold":
+                religions.append("Kurtulmak, Kobold God of War and Mining")
+            
+            if self.race == "Drow":
+                religions.append("Lolth, Drow Goddess of Spiders")
+            
+            if self.race == "Goblin":
+                religions.append("Maglubiyet, Goblinoid God of War")
+            
+            if self.race == "Dwarf":
+                religions.append("Moradin, Dwarf God of Creation")
+
+        if (self.alignment == "Lawful Evil" or self.alignment == "Neutral Evil") or self.alignment == "Chaotic Evil":
+            religions = ["Auril, Goddess of Winter", "Bane, God of Tyranny", "Beshaba, Goddess of Misfortune", "Bhaal, God of Murder", "Cyric, God of Lies", "Leira, Goddess of Illusion", "Loviatar, Goddess of Pain", "Malar, God of the Hunt", "Mask, God of Thieves", "Myrkul, God of Death", "Oghma, God of Knowledge", "Shar, Goddess of Darkness and Loss", "Silvanus, God of Wild Nature", "Talona, Goddess of Disease and Poison", "Talos, God of Storms", "Tempus, God of War", "Umberlee, Goddess of the Sea", "Waukeen, Goddess of Trade", "Nonreligious/Athiest"]
+            
+            if self.race == "Dragonborn":
+                religions.append("Bahamut, Dragon God of Good")
+                religions.append("Tiamat, Dragon Goddess of Evil")
+            
+            if self.race == "Elf" or self.race == "Half-Elf":
+                religions.append("Corellon Larethian, Elf Deity of Art and Magic")
+                religions.append("Deep Sashelas, Elf God of the Sea")
+                religions.append("Rillifane Rallathil, Wood Elf God of Nature")
+                religions.append("Sehanine Moonbow, Elf Goddess of the Moon")
+            
+            if self.race == "Gnome":
+                religions.append("Garl Glittergold, Gnome God of Trickery and Wiles")
+            
+            if self.race == "Halfling":
+                religions.append("Yondalla, Halfling Goddess of Fertility and Protection")
+            
+            if self.race == "Giant" or self.race == "Goliath":
+                religions.append("Grolantor, Hill Giant God of War")
+                religions.append("Skoraeus Stonebones, God of Stone Giants and Art")
+                religions.append("Surtur, God of fire Giants and Craft")
+                religions.append("Thrym, God of Frost Giants and Strength")
+            
+            if self.race == "Orc" or self.race == "Half-Orc":
+                religions.append("Gruumsh, Orc God of Storms and War")
+            
+            if self.race == "Kobold":
+                religions.append("Kurtulmak, Kobold God of War and Mining")
+            
+            if self.race == "Drow":
+                religions.append("Lolth, Drow Goddess of Spiders")
+            
+            if self.race == "Goblin":
+                religions.append("Maglubiyet, Goblinoid God of War")
+            
+            if self.race == "Dwarf":
+                religions.append("Moradin, Dwarf God of Creation")
+            
+        self.religion = random.choice(religions)
+    
+    def religion_generation_racial(self):
+        # Religion generation based SOLELY on race. Main-pantheon gods are excluded from this list and is only used if user selects Racial Only
+        if self.race == "Dragonborn":
+            religions = ["Bahamut, Dragon God of Good", "Tiamat, Dragon Goddess of Evil"]
+            self.religion = random.choice(religions)
+        if self.race == "Elf" or "Half-Elf":
+            religions = ["Corellon Larethian, Elf Deity of Art and Magic", "Deep Sashelas, Elf God of the Sea", "Rillifane Rallathil, Wood Elf God of Nature", "Sehanine Moonbow, Elf Goddess of the Moon"]
+            self.religion = random.choice(religions)
+        if self.race == "Gnome":
+            religions = ["Garl Glittergold, Gnome God of Trickery and Wiles"]
+            self.religion = random.choice(religions)
+        if self.race == "Halfling":
+            religions = ["Yondalla, Halfling Goddess of Fertility and Protection"]
+            self.religion = random.choice(religions)
+        if self.race == "Giant" or "Goliath":
+            religions =["Grolantor, Hill Giant God of War", "Skoraeus Stonebones, God of Stone Giants and Art", "Surtur, God of fire Giants and Craft", "Thrym, God of Frost Giants and Strength"]
+            self.religion = random.choice(religions)
+        if self.race == "Orc" or "Half-Orc":
+            religions = ["Gruumsh, Orc God of Storms and War"]
+            self.religion = random.choice(religions)
+        if self.race == "Kobold":
+            religions = ["Kurtulmak, Kobold God of War and Mining"]
+            self.religion = random.choice(religions)
+        if self.race == "Drow":
+            religions = ["Lolth, Drow Goddess of Spiders"]
+            self.religion = random.choice(religions)
+        if self.race == "Goblin":
+            religions = ["Maglubiyet, Goblinoid God of War"]
+            self.religion = random.choice(religions)
+        if self.race == "Dwarf":
+            religions = ["Moradin, Dwarf God of Creation"]
+            self.religion = random.choice(religions)
+
     def display(self):  # Returns in-terminal output of the generated NPC
         print("NPC Generated! \n")
         print("Name: ", self.name)
@@ -320,7 +567,7 @@ class NpcGenerator():
         print("\n")
         for each in self.traits:
             print(each)
-            
+         
     def output(self):  # Writes the NPC to file for reference
         filename = "{}.txt".format(self.name)
         file = open(filename, "w")
@@ -351,14 +598,22 @@ class NpcGenerator():
         path = os.path.abspath(filename)
         print("NPC file saved to location ", path)
 
+
 '''
 # Temporarily disabled for GUI Testing, GUI inherently runs each method as selected.
 npc = NpcGenerator()
 npc.race_gen()
+npc.alignment_gen()
 npc.sex_gen()
 npc.name_gen()
-npc.traits_gen()
 npc.attributes_gen()
+
+
+npc.income_determinator()
+npc.job_determinator()
+npc.religion_generation_alignment()
+print(npc.religion)
+npc.known_languages()
+print(npc.languages)
 npc.display()
-npc.output()
 '''
